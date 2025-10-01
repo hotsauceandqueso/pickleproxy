@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVault - Play Free Web Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 50px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: #667eea;
+        }
+
+        .games-section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .game-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #2a2a2a;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .game-info {
+            padding: 1.5rem;
+        }
+
+        .game-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .game-description {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #2a2a2a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #b0b0b0;
+        }
+
+        footer {
+            background: #0f0f0f;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GameVault</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Play Free Web Games</h1>
+        <p>Discover hundreds of games, all playable instantly in your browser</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for games..." id="searchInput">
+        </div>
+    </section>
+
+    <section class="games-section" id="games">
+        <h2 class="section-title">Popular Games</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-thumbnail">🎮</div>
+                <div class="game-info">
+                    <h3 class="game-title">Space Shooter</h3>
+                    <p class="game-description">Defend the galaxy from alien invaders in this fast-paced shooter</p>
+                    <div class="game-tags">
+                        <span class="tag">Action</span>
+                        <span class="tag">Arcade</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">🧩</div>
+                <div class="game-info">
+                    <h3 class="game-title">Puzzle Master</h3>
+                    <p class="game-description">Test your logic skills with challenging puzzles</p>
+                    <div class="game-tags">
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">🏃</div>
+                <div class="game-info">
+                    <h3 class="game-title">Runner Quest</h3>
+                    <p class="game-description">Run, jump, and collect coins in this endless adventure</p>
+                    <div class="game-tags">
+                        <span class="tag">Runner</span>
+                        <span class="tag">Casual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">⚔️</div>
+                <div class="game-info">
+                    <h3 class="game-title">Battle Arena</h3>
+                    <p class="game-description">Fight epic battles in this multiplayer combat game</p>
+                    <div class="game-tags">
+                        <span class="tag">Fighting</span>
+                        <span class="tag">Multiplayer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">🎲</div>
+                <div class="game-info">
+                    <h3 class="game-title">Dice Masters</h3>
+                    <p class="game-description">Roll the dice and compete for the highest score</p>
+                    <div class="game-tags">
+                        <span class="tag">Board Game</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">🏎️</div>
+                <div class="game-info">
+                    <h3 class="game-title">Speed Racer</h3>
+                    <p class="game-description">Race through city streets at breakneck speeds</p>
+                    <div class="game-tags">
+                        <span class="tag">Racing</span>
+                        <span class="tag">Action</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">New Releases</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-thumbnail">🎯</div>
+                <div class="game-info">
+                    <h3 class="game-title">Target Practice</h3>
+                    <p class="game-description">Perfect your aim in this challenging shooting game</p>
+                    <div class="game-tags">
+                        <span class="tag">Shooting</span>
+                        <span class="tag">Skill</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">🌟</div>
+                <div class="game-info">
+                    <h3 class="game-title">Star Collector</h3>
+                    <p class="game-description">Collect stars and unlock new levels in this platformer</p>
+                    <div class="game-tags">
+                        <span class="tag">Platform</span>
+                        <span class="tag">Adventure</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-thumbnail">🧠</div>
+                <div class="game-info">
+                    <h3 class="game-title">Memory Match</h3>
+                    <p class="game-description">Train your brain with this classic memory game</p>
+                    <div class="game-tags">
+                        <span class="tag">Memory</span>
+                        <span class="tag">Casual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 GameVault. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const gameCards = document.querySelectorAll('.game-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            gameCards.forEach(card => {
+                const title = card.querySelector('.game-title').textContent.toLowerCase();
+                const description = card.querySelector('.game-description').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        gameCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const gameTitle = card.querySelector('.game-title').textContent;
+                alert(`Loading ${gameTitle}...`);
+            });
+        });
+    </script>
+</body>
+</html>
